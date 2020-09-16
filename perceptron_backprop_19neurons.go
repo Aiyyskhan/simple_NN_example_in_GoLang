@@ -7,7 +7,7 @@
 package main
 
 import (
-  "D:/Golang_projects/simple_NN_example_in_GoLang/dataPackage/dataset"
+  "github.com/Aiyyskhan/simple_NN_example_in_GoLang/dataPackage"
   "fmt"
   "math/rand"
 )
