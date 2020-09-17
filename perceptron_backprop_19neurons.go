@@ -16,9 +16,9 @@ import (
 
 const (
 	// гиперпараметры
-	numIn            = 4
+	numIn            = 7
 	numHidd          = 8
-	numOut           = 7
+	numOut           = 4
 	learningRate     = 0.7 //скорость обучения
 	initialWeightMax = 0.5 //максимум диапазона случайных значений стартовых весов
 	momentum         = 0.9 // инерция
@@ -44,6 +44,16 @@ var randomizedIndex [patternCount]int
 var epoch uint64
 
 func main() {
+	setup()
+
+	fmt.Println("First test: ")
+	testing()
+
+	trainNN() //обучение
+
+	fmt.Println("")
+	fmt.Println("Final test: ")
+	testing()
 }
 
 func setup() {
@@ -63,15 +73,6 @@ func setup() {
 	for p := 0; p < patternCount; p++ {
 		randomizedIndex[p] = p
 	}
-
-	fmt.Println("First test: ")
-	testing()
-
-	trainNN() //обучение
-
-	fmt.Println("")
-	fmt.Println("Final test: ")
-	testing()
 }
 
 func neuron() { //логика нейрона
