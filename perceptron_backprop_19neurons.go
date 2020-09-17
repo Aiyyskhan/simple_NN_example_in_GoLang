@@ -1,7 +1,13 @@
 /*
- * Double layer perceptron example
+ *
+ * Two-layer fully connected neural network
+ *
  * Sigmoid activation function
  * Backpropagation
+ *
+ * Created in 16.09.2020
+ * by Aiyyskhan Alexeev
+ *
  */
 
 package main
@@ -19,14 +25,14 @@ const (
 	numIn            = 7
 	numHidd          = 8
 	numOut           = 4
-	learningRate     = 0.7 //скорость обучения
-	initialWeightMax = 0.5 //максимум диапазона случайных значений стартовых весов
+	learningRate     = 0.7 // скорость обучения
+	initialWeightMax = 0.5 // максимум диапазона случайных значений стартовых весов
 	momentum         = 0.9 // инерция
 	success          = 0.005
 	patternCount     = 10
 )
 
-var out [numOut]float64 //выход сети
+var out [numOut]float64 // выход сети
 var hNeuron [numHidd][2][numIn + 1]float64
 var oNeuron [numOut][2][numHidd + 1]float64
 var changeHiddNeuron [numHidd][numIn + 1]float64
@@ -41,7 +47,7 @@ var (
 )
 
 var randomizedIndex [patternCount]int
-var epoch uint64
+var epoch int
 
 func main() {
 	setup()
@@ -49,7 +55,8 @@ func main() {
 	fmt.Println("First test: ")
 	testing()
 
-	trainNN() //обучение
+	// обучение
+	trainNN()
 
 	fmt.Println("")
 	fmt.Println("Final test: ")
